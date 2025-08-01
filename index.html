@@ -2,13 +2,59 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>-Pino- NFT Collections</title>
+  <title>-Pino- Collections</title>
   <style>
     body {
-      text-align: center;
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #fdfdfd;
-      padding: 50px;
+      text-align: center;
+      color: #222;
+    }
+
+    header {
+      position: relative;
+    }
+
+    header img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2.5em;
+    }
+
+    .buttons {
+      margin: 40px 0;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 24px;
+      background: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .buttons a:hover {
+      background: #555;
+    }
+
+    .links {
+      margin: 40px 0;
+    }
+
+    .links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #0077cc;
+      text-decoration: none;
     }
 
     #audio-control {
@@ -36,16 +82,27 @@
   </style>
 </head>
 <body>
-  <h1>Benvenuto in -Pino-</h1>
-  <p>Sito in costruzione. Musica attiva!</p>
+  <header>
+    <img src="assets/banner.jpg" alt="Banner -Pino- Collections">
+  </header>
 
-  <!-- 🎧 AUDIO -->
+  <h1>Benvenuto in -Pino- Collections</h1>
+
+  <div class="buttons">
+    <a href="https://opensea.io/collection/yumi-664115313" target="_blank">🏰 YUMI Collection</a>
+    <a href="https://rarible.com/collection/base/0x95f58e17fda667283cb44a09ba45951fa0d3a38e/items" target="_blank" class="collection-button">🎭 YUMI su Rarible</a>
+    <!-- Aggiungi qui altri link in futuro -->
+  </div>
+
+  <div class="links">
+    <a href="https://www.facebook.com/groups/1195258431945008" target="_blank">🔮 Gruppo Facebook</a>
+    <a href="https://opensea.io/0x502d873152ab0883b56fc2a27088258c481cfb34" target="_blank">🏰 OpenSea</a>
+    <a href="https://rarible.com/user/0x502d873152ab0883b56fc2a27088258c481cfb34/owned" target="_blank">🎭 Rarible</a>
+  </div>
+
   <audio id="bg-audio" loop autoplay></audio>
-
-  <!-- 🎧 Icona cuffie -->
   <div id="audio-control">🎧</div>
 
-  <!-- 🌐 Selettore lingua -->
   <div id="lang-selector">
     <select id="lang-dropdown">
       <option value="it">🇮🇹 Italiano</option>
@@ -74,18 +131,15 @@
       }
     }
 
-    // Browser language detection
     const browserLang = navigator.language.slice(0, 2);
     const initialLang = tracks[browserLang] ? browserLang : "it";
     langDropdown.value = initialLang;
     setLanguage(initialLang);
 
-    // Cambia lingua manualmente
     langDropdown.addEventListener("change", (e) => {
       setLanguage(e.target.value);
     });
 
-    // Toggle cuffie
     let isMuted = false;
     audioControl.addEventListener("click", () => {
       isMuted = !isMuted;
@@ -93,12 +147,9 @@
       audioControl.style.opacity = isMuted ? 0.4 : 1;
     });
 
-    // Sblocca autoplay su iOS al primo tocco
     window.addEventListener('click', () => {
       audio.play().catch(() => {});
     }, { once: true });
   </script>
 </body>
 </html>
-
-Aggiunta musica dinamica, selezione lingua e banner
