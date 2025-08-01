@@ -7,7 +7,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-image: url('assets/banner.jpg');
+      background-image: url('./assets/banner.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -136,11 +136,11 @@
     const audioControl = document.getElementById('audio-control');
 
     const tracks = {
-      it: "https://cdn.pixabay.com/audio/2022/03/25/audio_ba2f2f06ac.mp3", // Kingdom of Fantasy
-      en: "https://cdn.pixabay.com/audio/2024/03/21/audio_9fdd295df7.mp3", // Epic Background
-      es: "https://cdn.pixabay.com/audio/2023/06/07/audio_71617d3fcf.mp3", // Fairy Tale Fantasy
-      eo: "https://cdn.pixabay.com/audio/2024/05/05/audio_e51110d9a0.mp3", // Game Setting Fantasy
-    };
+  it: "assets/music/IT.mp3",  // Kingdom of Fantasy
+  en: "assets/music/EN.mp3",  // Epic Background
+  es: "assets/music/ES.mp3",  // Fairy Tale Fantasy
+  eo: "assets/music/EO.mp3",  // Game Setting Fantasy
+};
 
     function setLanguage(lang) {
       if (tracks[lang]) {
