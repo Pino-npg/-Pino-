@@ -2,172 +2,134 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>-Pino- Collections</title>
+  <link rel="icon" href="assets/favicon.ico">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-image: url('./assets/banner.jpg');
+      color: white;
+      background-image: url('assets/banner.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      color: white;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
     }
 
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-    }
-
     h1 {
-      font-size: 2.8em;
-      margin: 20px 0 10px;
+      font-size: 3em;
+      margin-bottom: 0.2em;
     }
 
-    .buttons {
-      margin: 40px 0;
-    }
-
-    .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 24px;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-
-    .buttons a:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .links {
-      margin: 30px 0;
-    }
-
-    .links a {
-      display: inline-block;
-      margin: 0 10px;
-      color: #aaddff;
-      text-decoration: none;
-    }
-
-    #audio-control {
-      position: fixed;
-      top: 20px;
-      right: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      z-index: 9999;
-      filter: drop-shadow(1px 1px 3px black);
-    }
-
-    #lang-selector {
-      position: fixed;
-      top: 20px;
-      right: 100px;
-      z-index: 9999;
-    }
-
-    #lang-dropdown {
-      font-size: 14px;
-      padding: 5px;
-      border-radius: 5px;
-    }
-
-    .description {
+    .desc {
       max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 12px;
-      line-height: 1.6;
+      margin-bottom: 1.5em;
+      font-size: 1.2em;
+      line-height: 1.6em;
+    }
+
+    .buttons, .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    button, .links a {
+      padding: 10px 20px;
+      background-color: #222;
+      color: white;
+      border: 1px solid #fff;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 1em;
+      border-radius: 4px;
+    }
+
+    .lang-select {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    select {
+      padding: 5px 10px;
+      font-size: 1em;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <header>
+  <div class="overlay">
+    <div class="lang-select">
+      <select id="lang" onchange="changeLang(this.value)">
+        <option value="it">🇮🇹 IT</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="es">🇪🇸 ES</option>
+        <option value="eo">🌎 EO</option>
+      </select>
+    </div>
+
     <h1>-Pino- Collections</h1>
-  </header>
+    <div class="desc" id="description">
+      <!-- Descrizione dinamica -->
+    </div>
 
-  <div class="buttons">
-    <a href="https://opensea.io/collection/yumi-664115313" target="_blank">🏰 YUMI su OpenSea</a>
-    <a href="https://rarible.com/collection/base/0x95f58e17fda667283cb44a09ba45951fa0d3a38e/items" target="_blank">🎭 YUMI su Rarible</a>
+    <div class="buttons">
+      <button onclick="location.href='https://opensea.io/collection/yumi-664115313'">Collezione YUMI</button>
+      <!-- Aggiungi altri pulsanti collezioni qui -->
+    </div>
+
+    <div class="links">
+      <a href="https://www.facebook.com/groups/1195258431945008" target="_blank">Facebook</a>
+      <a href="https://opensea.io/collection/yumi-664115313" target="_blank">OpenSea</a>
+      <a href="https://rarible.com/collection/base/0x95f58e17fda667283cb44a09ba45951fa0d3a38e/items" target="_blank">Rarible</a>
+    </div>
   </div>
 
-  <div class="links">
-    <a href="https://www.facebook.com/groups/1195258431945008" target="_blank">🔮 Gruppo Facebook</a>
-    <a href="https://opensea.io/0x502d873152ab0883b56fc2a27088258c481cfb34" target="_blank">🏰 Profilo OpenSea</a>
-    <a href="https://rarible.com/user/0x502d873152ab0883b56fc2a27088258c481cfb34/owned" target="_blank">🎭 Profilo Rarible</a>
-  </div>
-
-  <div class="description">
-    <h2>🧭 Who is Pino?</h2>
-    <p>
-      A sensitive and curious creator, Pino is a free spirit with a deep connection to nature and animals. 
-      He loves traveling, exploring different cultures, and learning from every encounter.
-    </p>
-    <p>
-      To him, borders are just human inventions: what truly matters are values — not ethnicity, religion, or origin. 
-      His art aims to break down barriers, speak a shared language, and remind us that deep down we’re all part of the same humanity.
-    </p>
-  </div>
-
-  <!-- AUDIO -->
-  <audio id="bg-audio" loop autoplay></audio>
-  <div id="audio-control">🎧</div>
-
-  <!-- LINGUA -->
-  <div id="lang-selector">
-    <select id="lang-dropdown">
-      <option value="it">🇮🇹 Italiano</option>
-      <option value="en">🇬🇧 English</option>
-      <option value="es">🇪🇸 Español</option>
-      <option value="eo">🌍 Esperanto</option>
-    </select>
-  </div>
+  <audio id="bgMusic" autoplay loop></audio>
 
   <script>
-    const audio = document.getElementById('bg-audio');
-    const langDropdown = document.getElementById('lang-dropdown');
-    const audioControl = document.getElementById('audio-control');
+    const descriptions = {
+      it: `Creatore sensibile e curioso, Pino è uno spirito libero con un profondo legame con la natura e gli animali. Ama viaggiare, esplorare culture diverse e imparare da ogni incontro. Per lui, i confini sono solo invenzioni umane: ciò che conta davvero sono i valori, non l'etnia, la religione o l'origine. La sua arte mira ad abbattere le barriere, parlare un linguaggio comune e ricordarci che in fondo siamo tutti parte della stessa umanità.`,
+      en: `A sensitive and curious creator, Pino is a free spirit with a deep connection to nature and animals. He loves traveling, exploring different cultures, and learning from every encounter. To him, borders are just human inventions: what truly matters are values not ethnicity, religion, or origin. His art aims to break down barriers, speak a shared language, and remind us that deep down we’re all part of the same humanity.`,
+      es: `Pino, un creador sensible y curioso, es un espíritu libre con una profunda conexión con la naturaleza y los animales. Le encanta viajar, explorar diferentes culturas y aprender de cada encuentro. Para él, las fronteras son solo invenciones humanas: lo que realmente importa son los valores, no la etnia, la religión ni el origen. Su arte busca derribar barreras, hablar un idioma común y recordarnos que, en el fondo, todos formamos parte de la misma humanidad.`,
+      eo: `Sentema kaj scivola kreinto, Pino estas libera spirito kun profunda ligo al naturo kaj bestoj. Li amas vojaĝi, esplori malsamajn kulturojn kaj lerni de ĉiu renkonto. Por li, limoj estas nur homaj inventoj: vere gravas valoroj, ne etneco, religio aŭ deveno. Lia arto celas rompi barojn, paroli komunan lingvon kaj memorigi nin, ke profunde ni ĉiuj estas parto de la sama homaro.`
+    };
 
-    const tracks = {
-  it: "assets/music/IT.mp3",  // Kingdom of Fantasy
-  en: "assets/music/EN.mp3",  // Epic Background
-  es: "assets/music/ES.mp3",  // Fairy Tale Fantasy
-  eo: "assets/music/EO.mp3",  // Game Setting Fantasy
-};
+    const musics = {
+      it: 'assets/music/IT.mp3',
+      en: 'assets/music/EN.mp3',
+      es: 'assets/music/ES.mp3',
+      eo: 'assets/music/EO.mp3'
+    };
 
-    function setLanguage(lang) {
-      if (tracks[lang]) {
-        audio.src = tracks[lang];
-        audio.play().catch(() => {});
-      }
+    function changeLang(lang) {
+      document.getElementById("description").innerText = descriptions[lang] || descriptions["en"];
+      const audio = document.getElementById("bgMusic");
+      audio.src = musics[lang] || musics["en"];
+      audio.play();
     }
 
+    // Imposta la lingua in base al browser
     const browserLang = navigator.language.slice(0, 2);
-    const initialLang = tracks[browserLang] ? browserLang : "it";
-    langDropdown.value = initialLang;
-    setLanguage(initialLang);
-
-    langDropdown.addEventListener("change", (e) => {
-      setLanguage(e.target.value);
-    });
-
-    let isMuted = false;
-    audioControl.addEventListener("click", () => {
-      isMuted = !isMuted;
-      audio.muted = isMuted;
-      audioControl.style.opacity = isMuted ? 0.4 : 1;
-    });
-
-    window.addEventListener('click', () => {
-      audio.play().catch(() => {});
-    }, { once: true });
+    changeLang(browserLang);
+    document.getElementById("lang").value = browserLang;
   </script>
 </body>
 </html>
