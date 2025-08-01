@@ -3,91 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <title>-Pino- NFT Collections</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fdfdfd;
+      padding: 50px;
+    }
+
+    #audio-control {
+      position: fixed;
+      top: 20px;
+      right: 60px;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 9999;
+      filter: drop-shadow(1px 1px 3px black);
+    }
+
+    #lang-selector {
+      position: fixed;
+      top: 20px;
+      right: 100px;
+      z-index: 9999;
+    }
+
+    #lang-dropdown {
+      font-size: 14px;
+      padding: 5px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-  <h1 style="text-align:center">Benvenuto in -Pino-</h1>
-  <p style="text-align:center">Sito in costruzione. Musica attiva!</p>
+  <h1>Benvenuto in -Pino-</h1>
+  <p>Sito in costruzione. Musica attiva!</p>
 
-  <!-- 🎧 AUDIO SCRIPT QUI -->
-  <!-- Incolla qui lo snippet che ti ho fornito prima (con audio, cuffie, lingua...) -->
-<!-- 🎧 Audio Lingue -->
-<audio id="bg-audio" loop></audio>
+  <!-- 🎧 AUDIO -->
+  <audio id="bg-audio" loop autoplay></audio>
 
-<!-- 🎧 Icona Cuffie -->
-<div id="audio-control">
-  🎧
-</div>
+  <!-- 🎧 Icona cuffie -->
+  <div id="audio-control">🎧</div>
 
-<!-- 🌐 Selettore Lingua -->
-<div id="lang-selector">
-  <select id="lang-dropdown">
-    <option value="it">🇮🇹 Italiano</option>
-    <option value="en">🇬🇧 English</option>
-    <option value="es">🇪🇸 Español</option>
-    <option value="eo">🌍 Esperanto</option>
-  </select>
-</div>
+  <!-- 🌐 Selettore lingua -->
+  <div id="lang-selector">
+    <select id="lang-dropdown">
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="es">🇪🇸 Español</option>
+      <option value="eo">🌍 Esperanto</option>
+    </select>
+  </div>
 
-<style>
-  #audio-control {
-    position: fixed;
-    top: 20px;
-    right: 60px;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 9999;
-    filter: drop-shadow(1px 1px 3px black);
-  }
+  <script>
+    const audio = document.getElementById('bg-audio');
+    const langDropdown = document.getElementById('lang-dropdown');
+    const audioControl = document.getElementById('audio-control');
 
-  #lang-selector {
-    position: fixed;
-    top: 20px;
-    right: 100px;
-    z-index: 9999;
-  }
+    const tracks = {
+      it: "https://cdn.pixabay.com/audio/2022/03/25/audio_ba2f2f06ac.mp3", // Kingdom of Fantasy
+      en: "https://cdn.pixabay.com/audio/2024/03/21/audio_9fdd295df7.mp3", // Epic Background
+      es: "https://cdn.pixabay.com/audio/2023/06/07/audio_71617d3fcf.mp3", // Fairy Tale Fantasy
+      eo: "https://cdn.pixabay.com/audio/2024/05/05/audio_e51110d9a0.mp3", // Game Setting Fantasy
+    };
 
-  #lang-dropdown {
-    font-size: 14px;
-    padding: 5px;
-    border-radius: 5px;
-  }
-</style>
-
-<script>
-  const audio = document.getElementById('bg-audio');
-  const langDropdown = document.getElementById('lang-dropdown');
-  const audioControl = document.getElementById('audio-control');
-
-  const tracks = {
-    it: "https://cdn.pixabay.com/audio/2022/03/25/audio_ba2f2f06ac.mp3",  // Kingdom of Fantasy
-    en: "https://cdn.pixabay.com/audio/2024/03/21/audio_9fdd295df7.mp3",  // Epic Background Music
-    es: "https://cdn.pixabay.com/audio/2023/06/07/audio_71617d3fcf.mp3",  // Dreamy Fairy Tale
-    eo: "https://cdn.pixabay.com/audio/2024/05/05/audio_e51110d9a0.mp3",  // Game Setting Fantasy
-  };
-
-  function setLanguage(lang) {
-    if (tracks[lang]) {
-      audio.src = tracks[lang];
-      audio.play().catch(() => {});
+    function setLanguage(lang) {
+      if (tracks[lang]) {
+        audio.src = tracks[lang];
+        audio.play().catch(() => {});
+      }
     }
-  }
 
-  // On load: detect browser language or fallback
-  const browserLang = navigator.language.slice(0, 2);
-  langDropdown.value = tracks[browserLang] ? browserLang : "it";
-  setLanguage(langDropdown.value);
+    // Browser language detection
+    const browserLang = navigator.language.slice(0, 2);
+    const initialLang = tracks[browserLang] ? browserLang : "it";
+    langDropdown.value = initialLang;
+    setLanguage(initialLang);
 
-  // Change language manually
-  langDropdown.addEventListener("change", (e) => {
-    setLanguage(e.target.value);
-  });
+    // Cambia lingua manualmente
+    langDropdown.addEventListener("change", (e) => {
+      setLanguage(e.target.value);
+    });
 
-  // Cuffie toggle on/off
-  let isMuted = false;
-  audioControl.addEventListener("click", () => {
-    isMuted = !isMuted;
-    audio.muted = isMuted;
-    audioControl.style.opacity = isMuted ? 0.4 : 1;
-  });
-</script></body>
+    // Toggle cuffie
+    let isMuted = false;
+    audioControl.addEventListener("click", () => {
+      isMuted = !isMuted;
+      audio.muted = isMuted;
+      audioControl.style.opacity = isMuted ? 0.4 : 1;
+    });
+
+    // Sblocca autoplay su iOS al primo tocco
+    window.addEventListener('click', () => {
+      audio.play().catch(() => {});
+    }, { once: true });
+  </script>
+</body>
 </html>
+Aggiunta musica dinamica e selezione lingua
