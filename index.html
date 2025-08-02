@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="overlay"></div>
-  <header>
+  <div class="container"></div>  <header>
     <h1>-Pino- Collections</h1>
     <div class="language-switcher">
       <button data-lang="en">EN</button>
@@ -87,7 +87,7 @@ Lia arto celas rompi barojn, paroli komunan lingvon kaj memorigi nin, ke profund
 
     // Set default based on browser
     const userLang = navigator.language.slice(0, 2);
-    setLanguage(descriptions[userLang] ? userLang : 'en');
+    setLanguage(Object.keys(descriptions).includes(userLang) ? userLang : 'en');
 
     window.addEventListener('click', () => {
       audio.play().catch(() => {});
