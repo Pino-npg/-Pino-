@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f0f0f0;
+    background: #1e1e1e url("banner.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+  }
+  
+  header {
+    text-align: center;
+    padding: 1em;
+    position: relative;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 2.5em;
+  }
+  
+  .language-switcher button {
+    margin: 0.3em;
+    padding: 0.5em 1em;
+    border: none;
+    background: #444;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .audio-control {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .links, .collections {
+    text-align: center;
+    margin-top: 2em;
+  }
+  
+  .links a, .collections a {
+    display: inline-block;
+    margin: 0.5em 1em;
+    color: #ffdd57;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  
+  section#description {
+    max-width: 800px;
+    margin: auto;
+    padding: 2em;
+    text-align: center;
+  }
