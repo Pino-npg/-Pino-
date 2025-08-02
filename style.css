@@ -1,63 +1,92 @@
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    color: #f0f0f0;
-    background: #1e1e1e url("banner.jpg") no-repeat center center fixed;
-    background-size: cover;
-  }
-  
-  .overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: -1;
-  }
-  
-  header {
-    text-align: center;
-    padding: 1em;
-    position: relative;
-  }
-  
-  h1 {
-    margin: 0;
-    font-size: 2.5em;
-  }
-  
-  .language-switcher button {
-    margin: 0.3em;
-    padding: 0.5em 1em;
-    border: none;
-    background: #444;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .audio-control {
-    position: absolute;
-    top: 1em;
-    right: 1em;
-    font-size: 1.5em;
-    cursor: pointer;
-  }
-  
-  .links, .collections {
-    text-align: center;
-    margin-top: 2em;
-  }
-  
-  .links a, .collections a {
-    display: inline-block;
-    margin: 0.5em 1em;
-    color: #ffdd57;
-    text-decoration: none;
-    font-size: 1.2em;
-  }
-  
-  section#description {
-    max-width: 800px;
-    margin: auto;
-    padding: 2em;
-    text-align: center;
-  }
+  margin: 0;
+  padding: 0;
+  background-image: url('banner.jpg'); /* L'immagine è nella stessa cartella del CSS */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+header {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.language-switcher button {
+  margin: 0 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.language-switcher button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.audio-control {
+  margin-top: 10px;
+  font-size: 28px;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+.audio-control:hover {
+  opacity: 1;
+}
+
+.links {
+  margin: 30px 0;
+}
+
+.links a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #aaddff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.links a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.collections {
+  margin-top: 30px;
+}
+
+.collections ul {
+  list-style: none;
+  padding: 0;
+}
+
+.collections li a {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 1.2em;
+}
